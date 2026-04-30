@@ -86,31 +86,39 @@ export class ArtifactSyncScheduler {
       if (!profilesRes.ok) throw new Error(`API returned ${String(profilesRes.status)}`);
       const { data: profiles } = (await profilesRes.json()) as { data: Array<{ id: string }> };
 
-      for (const profile of profiles) {
-        const integrationsRes = await fetch(
-          `${this.apiBaseUrl}/profiles/${profile.id}/integrations?status=active`,
-          { signal: AbortSignal.timeout(5000) },
-        );
-        if (!integrationsRes.ok) continue;
-        const { data: integrations } = (await integrationsRes.json()) as {
-          data: Array<{ id: string; provider: string }>;
-        };
+      const profileIntegrationTasks = await Promise.all(
+        profiles.map(async (profile) => {
+          try {
+            const integrationsRes = await fetch(
+              `${this.apiBaseUrl}/profiles/${profile.id}/integrations?status=active`,
+              { signal: AbortSignal.timeout(5000) },
+            );
+            if (!integrationsRes.ok) return [];
+            const { data: integrations } = (await integrationsRes.json()) as {
+              data: Array<{ id: string; provider: string }>;
+            };
 
-        for (const integration of integrations) {
-          tasks.push({
-            id: `${runId}-sync-${profile.id}-${integration.id}`,
-            runId,
-            role: 'catcher',
-            description: `Sync artifacts from ${integration.provider} (incremental)`,
-            payload: {
-              profileId: profile.id,
-              integrationId: integration.id,
-              source: 'schedule',
-              scheduledAt,
-              mode: 'incremental',
-            },
-          });
-        }
+            return integrations.map((integration) => ({
+              id: `${runId}-sync-${profile.id}-${integration.id}`,
+              runId,
+              role: 'catcher' as const,
+              description: `Sync artifacts from ${integration.provider} (incremental)`,
+              payload: {
+                profileId: profile.id,
+                integrationId: integration.id,
+                source: 'schedule' as const,
+                scheduledAt,
+                mode: 'incremental' as const,
+              },
+            }));
+          } catch {
+            return [];
+          }
+        }),
+      );
+
+      for (const integrationTasks of profileIntegrationTasks) {
+        tasks.push(...integrationTasks);
       }
     } catch {
       // API unavailable — no-op; sync will retry on next interval
