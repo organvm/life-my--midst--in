@@ -335,6 +335,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'analyst',
     name: 'Analyst',
+    type: 'analyst',
+    nomen: 'Perscrutator',
+    motto: 'Veritas in Partibus',
+    role_vector: 'Precision reasoning, decomposition, structure',
+    tone_register: 'Objective, clinical, evidence-dense',
     ontology: 'cognitive',
     functional_scope: 'precision reasoning, decomposition, structure',
     stylistic_parameters: {
@@ -355,6 +360,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'synthesist',
     name: 'Synthesist',
+    type: 'synthesist',
+    nomen: 'Coalesctor',
+    motto: 'E Pluribus Unum',
+    role_vector: 'Pattern merging and integrative creativity',
+    tone_register: 'Expansive, associative, high-level',
     ontology: 'cognitive',
     functional_scope: 'pattern merging and integrative creativity',
     stylistic_parameters: {
@@ -375,6 +385,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'observer',
     name: 'Observer',
+    type: 'observer',
+    nomen: 'Spectator',
+    motto: 'Vidi et Didici',
+    role_vector: 'Detached perception and data intake',
+    tone_register: 'Measured, neutral, witness-oriented',
     ontology: 'cognitive',
     functional_scope: 'detached perception and data intake',
     stylistic_parameters: {
@@ -392,6 +407,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'strategist',
     name: 'Strategist',
+    type: 'strategist',
+    nomen: 'Consiliarius',
+    motto: 'Ad Astra per Aspera',
+    role_vector: 'Long-horizon planning and prioritization',
+    tone_register: 'Persuasive, forward-looking, competitive',
     ontology: 'cognitive',
     functional_scope: 'long-horizon planning and prioritization',
     stylistic_parameters: {
@@ -412,6 +432,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'speculator',
     name: 'Speculator',
+    type: 'speculator',
+    nomen: 'Explorator',
+    motto: 'Quod Si?',
+    role_vector: 'Scenario projection and hypothesis generation',
+    tone_register: 'Exploratory, inquisitive, risk-aware',
     ontology: 'cognitive',
     functional_scope: 'scenario projection and hypothesis generation',
     stylistic_parameters: {
@@ -430,6 +455,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'interpreter',
     name: 'Interpreter',
+    type: 'interpreter',
+    nomen: 'Interpres',
+    motto: 'Pons Verborum',
+    role_vector: 'Translation across media and audiences',
+    tone_register: 'Clarifying, adaptive, bridge-oriented',
     ontology: 'expressive',
     functional_scope: 'translation across media and audiences',
     stylistic_parameters: {
@@ -447,6 +477,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'artisan',
     name: 'Artisan',
+    type: 'artisan',
+    nomen: 'Artifex',
+    motto: 'Labor Omnia Vincit',
+    role_vector: 'Craft, quality, and detail obsession',
+    tone_register: 'Precise, tactile, technique-focused',
     ontology: 'expressive',
     functional_scope: 'craft, quality, and detail obsession',
     stylistic_parameters: {
@@ -464,6 +499,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'architect',
     name: 'Architect',
+    type: 'architect',
+    nomen: 'Architectus',
+    motto: 'Forma Sequitur Functionem',
+    role_vector: 'Design, abstraction, system structure',
+    tone_register: 'Authoritative, structural, holistic',
     ontology: 'expressive',
     functional_scope: 'design, abstraction, system structure',
     stylistic_parameters: {
@@ -484,6 +524,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'narrator',
     name: 'Narrator',
+    type: 'narrator',
+    nomen: 'Narrator',
+    motto: 'Fabula Docet',
+    role_vector: 'Storytelling, context, explanation',
+    tone_register: 'Engaging, thematic, human-centric',
     ontology: 'expressive',
     functional_scope: 'storytelling, context, explanation',
     stylistic_parameters: {
@@ -504,6 +549,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'provoker',
     name: 'Provoker',
+    type: 'provoker',
+    nomen: 'Provocator',
+    motto: 'Aude Sapere',
+    role_vector: 'Challenge, disruption, provocation',
+    tone_register: 'Challenging, dialectic, friction-dense',
     ontology: 'expressive',
     functional_scope: 'challenge, disruption, provocation',
     stylistic_parameters: {
@@ -524,6 +574,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'mediator',
     name: 'Mediator',
+    type: 'mediator',
+    nomen: 'Conciliator',
+    motto: 'Concordia Discors',
+    role_vector: 'Consensus, diplomacy, bridge-building',
+    tone_register: 'Diplomatic, empathetic, harmony-seeking',
     ontology: 'expressive',
     functional_scope: 'consensus, diplomacy, bridge-building',
     stylistic_parameters: {
@@ -545,6 +600,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'executor',
     name: 'Executor',
+    type: 'executor',
+    nomen: 'Effector',
+    motto: 'Acta Non Verba',
+    role_vector: 'Action, throughput, closure',
+    tone_register: 'Decisive, direct, outcome-focused',
     ontology: 'operational',
     functional_scope: 'action, throughput, closure',
     stylistic_parameters: {
@@ -562,6 +622,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'steward',
     name: 'Steward',
+    type: 'steward',
+    nomen: 'Vilicus',
+    motto: 'Custos Fidelis',
+    role_vector: 'Maintenance, governance, oversight',
+    tone_register: 'Reliable, cautious, service-oriented',
     ontology: 'operational',
     functional_scope: 'maintenance, governance, oversight',
     stylistic_parameters: { tone: 'measured', rhetorical_mode: 'forensic', compression_ratio: 0.5 },
@@ -575,7 +640,12 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'integrator',
     name: 'Integrator',
-    ontology: 'operational',
+    type: 'integrator',
+    nomen: 'Integrator',
+    motto: 'Totum Pro Parte',
+    role_vector: 'Cross-team assembly and interoperability',
+    tone_register: 'Holistic, inclusive, systematic',
+    ontology: 'expressive',
     functional_scope: 'cross-team assembly and interoperability',
     stylistic_parameters: {
       tone: 'technical',
@@ -595,6 +665,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'custodian',
     name: 'Custodian',
+    type: 'custodian',
+    nomen: 'Custos',
+    motto: 'Memoria Perpetua',
+    role_vector: 'Record-keeping, curation, historical fidelity',
+    tone_register: 'Forensic, archival, meticulous',
     ontology: 'operational',
     functional_scope: 'record-keeping, curation, historical fidelity',
     stylistic_parameters: { tone: 'measured', rhetorical_mode: 'forensic', compression_ratio: 0.5 },
@@ -608,6 +683,11 @@ export const MASK_TAXONOMY: Mask[] = [
   {
     id: 'calibrator',
     name: 'Calibrator',
+    type: 'calibrator',
+    nomen: 'Librator',
+    motto: 'In Equilibrio',
+    role_vector: 'Evaluation, metrics, standards alignment',
+    tone_register: 'Balanced, analytical, adjustment-oriented',
     ontology: 'operational',
     functional_scope: 'evaluation, metrics, standards alignment',
     stylistic_parameters: {

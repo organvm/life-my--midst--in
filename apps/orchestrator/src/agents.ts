@@ -33,6 +33,7 @@ export interface AgentTask {
 
 export interface Agent {
   role: AgentRole;
+  defaultMask?: string;
   execute(task: AgentTask): Promise<AgentResult>;
 }
 

@@ -59,6 +59,7 @@ const parseComponents = (value: unknown): Component[] => {
  */
 export class ArchitectAgent implements Agent {
   role = 'architect' as const;
+  defaultMask = 'architect';
   private executor?: AgentExecutor;
 
   constructor(executor?: AgentExecutor) {

@@ -62,6 +62,7 @@ const parseFileChanges = (value: unknown): FileChange[] => {
  */
 export class ImplementerAgent implements Agent {
   role = 'implementer' as const;
+  defaultMask = 'executor';
   private executor?: AgentExecutor;
 
   constructor(executor?: AgentExecutor) {
