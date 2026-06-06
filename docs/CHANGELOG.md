@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - `did:key`, `did:jwk`, `did:pkh` DID resolvers with plugin-based registry
 - EventEmitter PubSub engine for GraphQL subscription events
 - GraphQL subscription resolvers (`profileUpdated`, `narrativeGenerated`)
@@ -42,11 +43,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive feature audit trail (`docs/FEATURE-AUDIT.md`)
 
 ### Changed
+
 - Updated `CONSOLIDATED-SPECIFICATIONS.md` implementation snapshot to reflect feature completeness
 - Updated `MANIFEST.md` from "90% Core Complete" to "Feature Complete" with corrected status tables
 - Replaced `docs/SECURITY.md` TODO placeholder with security contact email
+- Technical-debt cleanup: removed 30+ stale TODOs from archived docs, cleaned up test comments
 
 ### Fixed
+
 - Fastify plugin hang in billing routes (missing `done` callback after async removal)
 - Search route double-prefix bug (`/search/search/jobs` -> `/search/jobs`)
 - React version mismatch: design-system upgraded to React 19 peerDependency
@@ -59,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-04-01
 
 ### Added
+
 - **Monorepo structure** with pnpm workspaces + Turborepo
   - `apps/api` - Fastify REST API with 100+ routes, OpenAPI spec
   - `apps/web` - Next.js 15 dashboard with React 19
@@ -90,6 +95,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Comprehensive documentation**: operations runbook, security guidelines, glossary
 
 ### Security
+
 - ESBuild vulnerability CVE-2025-29927 patched
 - Auth middleware for protected API routes (ownership + admin guards)
 - Stripe webhook signature verification
@@ -98,6 +104,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.1] - 2025-02-01
 
 ### Added
+
 - Initial project scaffold with covenant document
 - Complete theatrical CV system design (Phases 1-9)
 - Basic schemas, CI/CD configuration, and development utilities

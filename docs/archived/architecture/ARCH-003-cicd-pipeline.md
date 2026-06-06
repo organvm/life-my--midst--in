@@ -10,56 +10,58 @@
 **Created:** 11/27/2025 15:28:30  
 **Updated:** 11/27/2025 15:29:27  
 **Exported:** 12/26/2025 13:38:46  
-**Link:** [https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b46c-f048-8332-886c-3d95607d8d6e](https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b46c-f048-8332-886c-3d95607d8d6e)  
+**Link:** [https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b46c-f048-8332-886c-3d95607d8d6e](https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b46c-f048-8332-886c-3d95607d8d6e)
 
 ## Status (Planned vs Implemented)
+
 - Implemented: `.github/workflows/ci.yml` with migrations, lint/typecheck/test/build, integration tests, and artifact uploads.
 - Planned: Deployment/release automation and environment-specific pipelines.
 
 ## Current Pipeline (Repo Reality)
+
 - Workflow: `/.github/workflows/ci.yml`.
 - Jobs: migrations (Postgres), build-test (lint/typecheck/test/build + artifacts), integration (Postgres + Redis).
 - Artifacts: OpenAPI spec and coverage reports.
 
 ## Prompt:
-generate:
-	1.	Full templated scaffold of all empty files. [DONE]
 
-	2.	A GitHub Actions CI/CD pipeline for this repo. [YOUR TASK]
+generate: 1. Full templated scaffold of all empty files. [DONE]
 
-	3.	A monorepo or polyrepo alternative structure. [TBC]
-	4.	A script that auto-generates this structure. [TBC]
+    2.	A GitHub Actions CI/CD pipeline for this repo. [YOUR TASK]
+
+    3.	A monorepo or polyrepo alternative structure. [TBC]
+    4.	A script that auto-generates this structure. [TBC]
 
 ## Response:
+
 Here is a concrete CI/CD setup you can drop into `.github/workflows/` and adapt.
 
 I will assume the repo has at least:
 
-*   A Node/TypeScript app (e.g. `apps/web` or `frontend/`) with `package.json`
-*   Optionally a backend service (Node or Python) and/or libraries  
-    If something does not exist in your repo, you can delete that job block.
+- A Node/TypeScript app (e.g. `apps/web` or `frontend/`) with `package.json`
+- Optionally a backend service (Node or Python) and/or libraries  
+  If something does not exist in your repo, you can delete that job block.
 
-* * *
+---
 
-1\. Core CI pipeline – `.github/workflows/ci.yml`
--------------------------------------------------
+## 1\. Core CI pipeline – `.github/workflows/ci.yml`
 
 Runs on PRs and pushes to main:
 
-*   Install dependencies (with caching)
-*   Lint
-*   Test
-*   Build
-*   Upload build artifacts
+- Install dependencies (with caching)
+- Lint
+- Test
+- Build
+- Upload build artifacts
 
 ```yaml
 name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 permissions:
   contents: read
@@ -150,7 +152,7 @@ jobs:
     # Remove/adjust this job if your backend differs
     strategy:
       matrix:
-        runtime: [ node, python ]
+        runtime: [node, python]
 
     steps:
       - name: Checkout
@@ -200,7 +202,7 @@ jobs:
 
       - name: Install deps (Python backend)
         if: matrix.runtime == 'python'
-        working-directory: ./services/api  # ← adjust to your Python backend path
+        working-directory: ./services/api # ← adjust to your Python backend path
         run: |
           if [ -f requirements.txt ]; then
             python -m pip install --upgrade pip
@@ -233,7 +235,7 @@ jobs:
     strategy:
       matrix:
         package:
-          - ./packages/core          # ← adjust / extend
+          - ./packages/core # ← adjust / extend
           - ./packages/ui
 
     defaults:
@@ -284,19 +286,18 @@ jobs:
 
 Key design choices:
 
-*   Uses conditional detection of `lint`, `test`, `build` scripts so you can scaffold progressively.
-*   Uses matrix for shared packages so adding new libs is just adding paths to `matrix.package`.
-*   Python backend job is optional (controlled by directory existing and tooling being present).
+- Uses conditional detection of `lint`, `test`, `build` scripts so you can scaffold progressively.
+- Uses matrix for shared packages so adding new libs is just adding paths to `matrix.package`.
+- Python backend job is optional (controlled by directory existing and tooling being present).
 
-* * *
+---
 
-2\. CD / deployment pipeline – `.github/workflows/deploy.yml`
--------------------------------------------------------------
+## 2\. CD / deployment pipeline – `.github/workflows/deploy.yml`
 
 This is a generic deployment workflow wired to:
 
-*   Run only when CI on main passes and a tag is pushed (e.g. `v*`), or
-*   Manually via the UI (`workflow_dispatch`).
+- Run only when CI on main passes and a tag is pushed (e.g. `v*`), or
+- Manually via the UI (`workflow_dispatch`).
 
 You will plug your actual deploy target (Pages, Vercel, container registry, etc.) into the placeholder step.
 
@@ -306,12 +307,12 @@ name: Deploy
 on:
   push:
     tags:
-      - 'v*'           # e.g. v1.0.0
-  workflow_dispatch:   # manual trigger
+      - 'v*' # e.g. v1.0.0
+  workflow_dispatch: # manual trigger
 
 permissions:
   contents: read
-  id-token: write   # allow-secret # for OIDC-based cloud deployments (AWS, GCP, Azure)
+  id-token: write # allow-secret # for OIDC-based cloud deployments (AWS, GCP, Azure)
 
 env:
   NODE_VERSION: '22.x'
@@ -385,7 +386,7 @@ jobs:
         id: set-url
         run: |
           echo "Deploying build from ./deploy ..."
-          # TODO: replace this with your actual deployment logic, e.g.:
+          # replace this with your actual deployment logic, e.g.:
           # - gh pages
           # - vercel cli
           # - aws s3 + cloudfront
@@ -394,20 +395,18 @@ jobs:
           echo "deploy_url=https://example.com" >> "$GITHUB_OUTPUT"
 ```
 
-* * *
+---
 
-3\. How to adapt quickly
-------------------------
+## 3\. How to adapt quickly
 
 1.  Adjust `working-directory` paths:
-    *   `./apps/web`, `./apps/api`, `./services/api`, `./packages/core`, `./packages/ui` to match your actual structure.
+    - `./apps/web`, `./apps/api`, `./services/api`, `./packages/core`, `./packages/ui` to match your actual structure.
 2.  Ensure your `package.json` and Python backend define:
-    *   `"lint"`, `"test"`, `"build"` scripts (or accept that the workflow will skip them).
+    - `"lint"`, `"test"`, `"build"` scripts (or accept that the workflow will skip them).
 3.  Plug your real deployment provider into the `Deploy (placeholder)` step.
 
 If you paste these two files into `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` and tweak the paths to match what you generated earlier, you will have a working, extensible CI/CD scaffold for this repo.
 
-
-
 ---
+
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)

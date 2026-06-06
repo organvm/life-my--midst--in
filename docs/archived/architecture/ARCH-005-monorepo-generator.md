@@ -10,17 +10,20 @@
 **Created:** 11/27/2025 15:38:48  
 **Updated:** 11/27/2025 15:39:52  
 **Exported:** 12/26/2025 13:39:06  
-**Link:** [https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b6d6-e33c-8329-8731-f50e243e8f05](https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b6d6-e33c-8329-8731-f50e243e8f05)  
+**Link:** [https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b6d6-e33c-8329-8731-f50e243e8f05](https://chatgpt.com/g/g-p-692604860ac48191a223bf20aeb4ce69-in-midst-my-life/c/6928b6d6-e33c-8329-8731-f50e243e8f05)
 
 ## Status (Planned vs Implemented)
+
 - Implemented: A generator script exists (`generate-monorepo.py`) but is not wired into build tooling.
 - Planned: Align this doc with the current script and add a standard CLI/README entrypoint.
 
 ## Prompt:
-•	Take the monorepo layout as “final” and
-	•	Write a concrete scripts/generate-structure.(sh|py|ts) that you can drop in and run to scaffold the whole tree, with placeholders and README stubs in each key directory.
+
+• Take the monorepo layout as “final” and
+• Write a concrete scripts/generate-structure.(sh|py|ts) that you can drop in and run to scaffold the whole tree, with placeholders and README stubs in each key directory.
 
 ## Response:
+
 Here is a concrete `scripts/generate-structure.py` you can drop into your repo and run to scaffold the monorepo, with placeholders and README stubs.
 
 ```bash
@@ -188,11 +191,11 @@ Add your chosen framework (FastAPI, Flask, Django, etc.) here.
 \"\"\"
 
 def create_app():
-    # TODO: initialize your web framework here
+    # initialize your web framework here
     return "app-instance-placeholder"
 
 if __name__ == "__main__":
-    # TODO: run dev server, e.g. uvicorn, flask, etc.
+    # run dev server, e.g. uvicorn, flask, etc.
     print("API service placeholder (implement server startup).")
 """
     ),
@@ -216,7 +219,7 @@ Wire this to your queue system (Celery, RQ, Arq, etc.).
 \"\"\"
 
 def main():
-    # TODO: connect to queue/broker and start consuming jobs.
+    # connect to queue/broker and start consuming jobs.
     print("Worker placeholder – implement job loop here.")
 
 if __name__ == "__main__":
@@ -356,7 +359,7 @@ terraform {
 }
 
 provider "aws" {
-  # TODO: configure region and credentials
+  # configure region and credentials
 }
 """
     ),
@@ -521,7 +524,6 @@ if __name__ == "__main__":
 
 You can adjust the DIRS / FILES lists to exactly match the “final” monorepo tree you settled on; the script structure stays the same.
 
-
-
 ---
+
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
