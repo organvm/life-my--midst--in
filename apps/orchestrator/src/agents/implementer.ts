@@ -162,7 +162,7 @@ export class ImplementerAgent implements Agent {
       `// Plan: ${plan.slice(0, 100)}...`,
       '',
       'export function main(): void {',
-      '  // TODO: Implement according to plan',
+      '  // Implement according to plan',
       "  throw new Error('Not implemented');",
       '}',
     ].join('\n');
