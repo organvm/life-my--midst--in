@@ -35,10 +35,14 @@ describe('Websocket Routes', () => {
 
     const messagesReceived: any[] = [];
     client2.on('message', (data) => {
-      messagesReceived.push(JSON.parse(data.toString()));
+      const str =
+        typeof data === 'string' ? data : Buffer.from(data as ArrayBuffer | Buffer[]).toString();
+      messagesReceived.push(JSON.parse(str));
     });
 
-    client1.send(JSON.stringify({ type: 'user-typing', userId: 'user-123', payload: { thread: '1' } }));
+    client1.send(
+      JSON.stringify({ type: 'user-typing', userId: 'user-123', payload: { thread: '1' } }),
+    );
 
     // Wait for message to propagate
     await new Promise((resolve) => setTimeout(resolve, 100));

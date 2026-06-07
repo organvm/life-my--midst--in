@@ -64,7 +64,14 @@ export default [
 
   // Relax strict rules for test files
   {
-    files: ['**/*.test.ts', '**/*.test.tsx', '**/test/**/*.ts', '**/test/**/*.tsx', '**/__tests__/**/*.ts', '**/__tests__/**/*.tsx'],
+    files: [
+      '**/*.test.ts',
+      '**/*.test.tsx',
+      '**/test/**/*.ts',
+      '**/test/**/*.tsx',
+      '**/__tests__/**/*.ts',
+      '**/__tests__/**/*.tsx',
+    ],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -72,7 +79,11 @@ export default [
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/require-await': 'off',
     },
   },
 

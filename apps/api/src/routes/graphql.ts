@@ -70,10 +70,7 @@ function buildContext(deps: GraphQLPluginDeps): GraphQLContext {
   };
 }
 
-export async function registerGraphQLRoute(
-  fastify: FastifyInstance,
-  deps: GraphQLPluginDeps,
-): Promise<void> {
+export function registerGraphQLRoute(fastify: FastifyInstance, deps: GraphQLPluginDeps): void {
   // Build GraphQL schema once at startup
   let schema: GraphQLSchema;
   try {

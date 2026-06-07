@@ -2,28 +2,30 @@ import type { FastifyPluginAsync } from 'fastify';
 
 interface WSMessage {
   type: string;
-  payload?: any;
+  payload?: unknown;
   userId?: string;
 }
 
-export const registerWebsocketRoutes: FastifyPluginAsync = async (fastify) => {
+export const registerWebsocketRoutes: FastifyPluginAsync = (fastify) => {
   fastify.get('/ws', { websocket: true }, (connection, _request) => {
-    // We can extract user ID from JWT if needed (request.user), 
-    // but for now let's just do a basic broadcast for typing indicators.
-    
+    void _request;
+
     connection.on('message', (message: Buffer | string) => {
       try {
-        const parsed = JSON.parse(message.toString()) as WSMessage;
-        
+        const parsed = JSON.parse(message.toString()) as unknown as WSMessage;
+
         if (parsed.type === 'user-typing') {
           // Broadcast to all other connected clients
           for (const client of fastify.websocketServer.clients) {
-            if (client !== connection && client.readyState === 1) { // OPEN
-              client.send(JSON.stringify({
-                type: 'user-typing',
-                userId: parsed.userId,
-                payload: parsed.payload,
-              }));
+            if (client !== connection && client.readyState === 1) {
+              // OPEN
+              client.send(
+                JSON.stringify({
+                  type: 'user-typing',
+                  userId: parsed.userId,
+                  payload: parsed.payload,
+                }),
+              );
             }
           }
         }
@@ -36,4 +38,6 @@ export const registerWebsocketRoutes: FastifyPluginAsync = async (fastify) => {
       // Clean up connection state if needed
     });
   });
+
+  return Promise.resolve();
 };
