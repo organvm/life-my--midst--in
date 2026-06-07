@@ -7,12 +7,12 @@ graph TD
     A[Raw Candidate Ledger] --> |Input| E(Transmutation Engine)
     B[Employer Role Requirements] --> |Input| E
     C[Bibliometrics / Citation Data] --> |Input| E
-    
+
     E --> |Mask Resonance Scoring| F[Curated Personae]
     E --> |Narrative Weighting| G[Tailored Narrative Blocks]
     E --> |JSON-LD Export| H[Semantic Resume Schema]
     E --> |Author-Level Metrics| I[H-Index & i10-Index]
-    
+
     F --> |Return| J[The Inverted Interview View]
     G --> |Return| J
     H --> |Return| K[Search Engine / LinkedIn Crawlers]

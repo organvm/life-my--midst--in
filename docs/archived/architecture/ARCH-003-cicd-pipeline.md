@@ -39,7 +39,7 @@ Here is a concrete CI/CD setup you can drop into `.github/workflows/` and adapt.
 I will assume the repo has at least:
 
 - A Node/TypeScript app (e.g. `apps/web` or `frontend/`) with `package.json`
-- Optionally a backend service (Node or Python) and/or libraries  
+- Optionally a backend service (Node or Python) and/or libraries
   If something does not exist in your repo, you can delete that job block.
 
 ---

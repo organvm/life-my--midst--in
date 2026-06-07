@@ -348,18 +348,24 @@ for await (const cloudFile of provider.listFiles('', {
 ## Known Limitations & Future Work
 
 1. **MIME Type Detection**: Extension-based only
+   - **TODO**: Use Dropbox's `has_explicit_shared_members` metadata
    - Dropbox doesn't provide MIME types in list response
 
 2. **Glob Matching**: Simple regex-based patterns
+   - **TODO**: Use `minimatch` library for full glob syntax
    - Current implementation supports `*`, `?`, and `*/**`
 
 3. **Recursive Folders**: Not fully implemented
    - `recursive: true` option is passed to API but not traversed
+   - **TODO**: Implement folder recursion in client code
 
 4. **Download Resume**: No support for partial downloads
+   - **TODO**: Add `Range` header support for resumable downloads
+   - Useful for large video files
 
 5. **Shared Folders**: Not explicitly handled
    - Works if user has access, but no special handling
+   - **TODO**: Add option to include/exclude shared folders
 
 ## Dropbox API Details
 
@@ -375,6 +381,7 @@ for await (const cloudFile of provider.listFiles('', {
 ### Rate Limits
 
 - Standard rate limits apply (not implemented in code)
+- **TODO**: Add retry logic with exponential backoff
 - Dropbox returns `429 Too Many Requests` with `Retry-After` header
 
 ### Permissions Required
@@ -397,6 +404,9 @@ for await (const cloudFile of provider.listFiles('', {
 - [x] MIME type detection from extensions
 - [x] OAuth flow with token refresh
 - [x] Preserves file creation times (`client_modified`)
+- [ ] Production TODO: Rate limiting with retry logic
+- [ ] Production TODO: Full glob library (`minimatch`)
+- [ ] Production TODO: Folder recursion traversal
 
 ## Environment Variables Required
 

@@ -1,9 +1,9 @@
 # Telos (Idealized Form)
 
-`in-midst-my-life` is conceived as a sovereign identity presentation medium based on the **Inverted Interview** paradigm. 
+`in-midst-my-life` is conceived as a sovereign identity presentation medium based on the **Inverted Interview** paradigm.
 
 ## The Core Thesis
-Conventional hiring structures place the applicant in a passive, submissive posture: broadcasting a singular, static CV to multiple recipients while performing standardized applications. 
+Conventional hiring structures place the applicant in a passive, submissive posture: broadcasting a singular, static CV to multiple recipients while performing standardized applications.
 
 The Inverted Interview upends this power dynamic:
 1. **Interactive Inversion**: The prospective employer or partner must first state their own values, role context, requirements, and culture by interacting with an interface.

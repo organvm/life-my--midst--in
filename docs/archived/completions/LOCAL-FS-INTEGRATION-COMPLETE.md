@@ -242,16 +242,28 @@ for await (const cloudFile of provider.listFiles('', {
 ## Known Limitations & Future Work
 
 1. **Checksum**: Currently uses simple path hash (path-based for delta sync)
+   - **TODO**: Compute SHA256 of file content for real change detection
+   - Required for accurate delta sync in `handleIncrementalSync()`
 
 2. **Glob Matching**: Simple regex-based pattern matching
+   - **TODO**: Use `minimatch` library for full glob syntax (`**/*`, `{a,b}`, etc.)
+   - Enables more flexible exclusion patterns
 
 3. **MIME Type Detection**: Extension-based only
+   - **TODO**: Use `file-type` or `mime-types` library
+   - Check file magic bytes for accuracy
 
 4. **Symlinks**: Not handled (follows default behavior)
+   - **TODO**: Add option to follow/skip symlinks
+   - Prevent circular references
 
 5. **Permissions**: No granular permission checking
+   - Files may be listed but unreadable
+   - **TODO**: Catch permission errors gracefully
 
 6. **Large Directories**: No pagination (async iterator helps)
+   - Async iterator helps, but still loads full directory listing
+   - **TODO**: Add chunking for directories with 10,000+ files
 
 ## Deployment Checklist
 
@@ -264,6 +276,8 @@ for await (const cloudFile of provider.listFiles('', {
 - [x] Preserves file creation times (birthtime)
 - [x] Filters by excludePatterns and maxFileSize
 - [x] Ready for CatcherAgent integration
+- [ ] Production TODO: SHA256 checksums
+- [ ] Production TODO: Full glob library (`minimatch`)
 
 ## Commit Details
 
@@ -297,4 +311,4 @@ Date:   Thu Jan 16 15:04:12 2026 -0800
 ---
 
 **Implementation Time**: ✅ 45 minutes (on schedule)  
-**Status**: Ready for production use
+**Status**: Ready for production use with noted TODOs for enhancements
