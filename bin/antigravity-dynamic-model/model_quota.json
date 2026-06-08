@@ -1,0 +1,16 @@
+{
+  "models": [
+    {
+      "name": "Gemini-1.5-Pro",
+      "priority": 1,
+      "quota": 1000000,
+      "used": 0
+    },
+    {
+      "name": "GPT-OSS 120B (Medium)",
+      "priority": 2,
+      "quota": 500000,
+      "used": 0
+    }
+  ]
+}
