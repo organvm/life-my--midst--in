@@ -33,3 +33,10 @@ next-env.d.ts
 Thumbs.db
 .lh/
 .vercel
+
+# removed inadvertently-committed local session artifacts (PII containment)
+docs/archived/foundations/FOUND-001-blockchain-cv-analogy.md
+docs/archived/foundations/FOUND-002-blockchain-cv-vs-resume.md
+docs/archived/foundations/FOUND-003-meta-latin-etymology.md
+docs/archived/foundations/FOUND-004-identity-narrative-questions.md
+docs/archived/foundations/FOUND-005-prospecting-research-prompts.md
