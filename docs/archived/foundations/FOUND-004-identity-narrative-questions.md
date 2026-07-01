@@ -1,0 +1,31 @@
+> **⚠️ ARCHIVED — HISTORICAL SNAPSHOT**
+> This document reflects the state at time of writing and may not match current implementation.
+> For current status, see [`docs/FEATURE-AUDIT.md`](../../FEATURE-AUDIT.md).
+
+# Identity and narrative questions
+
+> **Historical Document** — This is an archived foundational design document. The implementation has evolved since this was written. See `docs/README.md` for current documentation and `docs/FEATURE-AUDIT.md` for current feature status.
+
+**User:** [redacted]  
+**Created:** 11/25/2025 15:32:15  
+**Updated:** 11/25/2025 15:32:18  
+**Exported:** 12/26/2025 13:35:03  
+**Link:** [redacted — personal conversation link]  
+
+## Prompt:
+1. What is the core identity or thesis that must remain invariant across all outputs?
+2. Which claims or attributes require external verification, evidence, or triangulation?
+3. What temporal arcs (periods, phases, epochs) define the evolution of this identity?
+4. Which contradictions or tensions exist within the narrative, and how should they be treated?
+5. What non-obvious influences or intellectual lineages should be included in the narrative structure?
+6. What strategic differentiators are often overlooked in similar profiles or narratives?
+7. Which parts of the identity need to be modular, mask-based, or contextually activated?
+8. What would an adversarial or skeptical evaluator challenge, and what evidence would counter them?
+
+## Response:
+To tailor responses effectively, could you clarify the context for these questions? Are you referring to an individual's personal/professional biography (such as your interactive CV), a brand identity, a character design, or something else? Also, is this for self-presentation, storytelling, academic framing, or strategic positioning?
+
+
+
+---
+Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
